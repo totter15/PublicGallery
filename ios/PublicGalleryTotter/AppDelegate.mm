@@ -17,6 +17,7 @@
 
 #import <react/config/ReactNativeConfig.h>
 
+
 @interface AppDelegate () <RCTCxxBridgeDelegate, RCTTurboModuleManagerDelegate> {
   RCTTurboModuleManager *_turboModuleManager;
   RCTSurfacePresenterBridgeAdapter *_bridgeAdapter;
@@ -45,8 +46,6 @@
   if([FIRApp defaultApp] == nil){
     [FIRApp configure];
   }
-
-  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"PublicGalleryTotter", nil);
 
   if (@available(iOS 13.0, *)) {
     rootView.backgroundColor = [UIColor systemBackgroundColor];
