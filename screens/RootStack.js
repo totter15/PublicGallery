@@ -6,6 +6,7 @@ import {useUserContext} from '../contexts/UserContext';
 import MainTab from './MainTab';
 import {getUser} from '../lib/users';
 import {subscribeAuth} from '../lib/auth';
+import UploadScreen from './UploadScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,11 @@ const RootStack = () => {
             name="MainTab"
             component={MainTab}
             options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Upload"
+            component={UploadScreen}
+            options={{title: '새 게시물', headerBackTitle: '뒤로가기'}}
           />
         </>
       ) : (
