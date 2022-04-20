@@ -1,5 +1,7 @@
 import React, {useMemo} from 'react';
 import {View, StyleSheet, Text, Image, Pressable} from 'react-native';
+import Avatar from './Avatar';
+import {useNavigation} from '@react-navigation/native';
 
 const PostCard = ({user, photoURL, description, createdAt, id}) => {
   const date = useMemo(
@@ -7,21 +9,20 @@ const PostCard = ({user, photoURL, description, createdAt, id}) => {
     [createdAt],
   );
 
-  const onOpenProfile = () => {};
+  const navigation = useNavigation();
+
+  const onOpenProfile = () => {
+    navigation.navigate('Profile', {
+      userId: user.id,
+      displayName: user.displayName,
+    });
+  };
 
   return (
     <View style={styles.block}>
       <View style={[styles.head, styles.paddingBlock]}>
         <Pressable style={styles.profile} onPress={onOpenProfile}>
-          <Image
-            source={
-              user.photoURL
-                ? {uri: user.photoURL}
-                : require('../assets/user.png')
-            }
-            resizeMode="cover"
-            style={styles.avatar}
-          />
+          <Avatar source={user.photoURL && {uri: user.photoURL}} />
           <Text style={styles.displayName}>{user.displayName}</Text>
         </Pressable>
       </View>
@@ -43,11 +44,6 @@ const styles = StyleSheet.create({
   block: {
     paddingTop: 16,
     paddingBottom: 16,
-  },
-  avatar: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
   },
   paddingBlock: {
     paddingHorizontal: 16,
