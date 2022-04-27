@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {ScrollView, StyleSheet} from 'react-native';
 import PostCard from '../compoenets/PostCard';
-import {useEffect} from 'react/cjs/react.production.min';
 import events from '../lib/events';
 
 const PostScreen = () => {
@@ -12,7 +11,7 @@ const PostScreen = () => {
 
   useEffect(() => {
     const handler = ({description}) => {
-      navigation.setParams({posts: {...post, description}});
+      navigation.setParams({post: {...post, description}});
     };
     events.addListener('updatePost', handler);
     return () => {

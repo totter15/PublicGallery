@@ -2,7 +2,6 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import FeedScreen from './FeedScreen';
 import ProfileScreen from './ProfileScreen';
-import {StackActions} from '@react-navigation/native';
 import PostScreen from './PostScreen';
 
 const Stack = createNativeStackNavigator();

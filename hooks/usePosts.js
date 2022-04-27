@@ -25,7 +25,7 @@ export default function usePosts(userId) {
     if (!posts || posts.lengh === 0 || refreshing) {
       return;
     }
-    const firstPost = posts[0];
+    const firstPost = posts !== [] && posts[0];
     setRefreshing(true);
     const newerPosts = await getNewerPosts(firstPost.id, userId);
     setRefreshing(false);
