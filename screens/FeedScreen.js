@@ -7,20 +7,9 @@ import {
 } from 'react-native';
 import PostCard from '../compoenets/PostCard';
 import usePosts from '../hooks/usePosts';
-import events from '../lib/events';
-import {removePost} from '../lib/posts';
 
 const FeedScreen = () => {
   const {posts, noMorePost, refreshing, onLoadMore, onRefresh} = usePosts();
-
-  useEffect(() => {
-    events.addListener('refresh', onRefresh);
-    events.addListener('removePost', removePost);
-    return () => {
-      events.removeListener('refresh', onRefresh);
-      events.removeListener('removePost', removePost);
-    };
-  }, [onRefresh]);
 
   return (
     <FlatList
