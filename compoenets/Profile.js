@@ -13,6 +13,7 @@ import PostGridItem from './PostGridItem';
 import usePosts from '../hooks/usePosts';
 import {useUserContext} from '../contexts/UserContext';
 import events from '../lib/events';
+import {removePost} from '../lib/posts';
 
 const Profile = ({userId}) => {
   const {posts, noMorePost, onLoadMore, onRefresh, refreshing} =
@@ -30,8 +31,10 @@ const Profile = ({userId}) => {
       return;
     }
     events.addListener('refresh', onRefresh);
+    events.addListener('removePost', removePost);
     return () => {
       events.removeListener('refresh', onRefresh);
+      events.removeListener('removePost', removePost);
     };
   }, [isMyProfile, onRefresh]);
 
