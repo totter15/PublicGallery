@@ -15,7 +15,7 @@ const FeedScreen = () => {
     <FlatList
       data={posts}
       renderItem={renderItem}
-      keyExtractor={item => item.id}
+      // keyExtractor={item => item.id}
       contentContainerStyle={styles.container}
       onEndReached={onLoadMore}
       onEndReachedThreshold={0.75}
